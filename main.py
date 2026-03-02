@@ -1,3 +1,5 @@
+from pydantic import validate_call
+
 def main() -> None:
     print("Hello from agentic-app!")
 
@@ -15,6 +17,7 @@ def bubble_sort(numbers: list[int]) -> list[int]:
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
     return arr
 
+@validate_call
 def calculate_average(numbers: list[int | float]) -> float:
     total = 0
     for n in numbers:
@@ -25,6 +28,8 @@ def calculate_average(numbers: list[int | float]) -> float:
 if __name__ == "__main__":
     main()
 
-    print(calculate_average([33, 33.4, 49, 2, 3, 75, "hello"]))
+    print(calculate_average([33, 33.4, 49, 2, 3, 75]))
 
     print(greet("AJ"))
+
+    print(bubble_sort([5, 2, 8, 1, 9]))

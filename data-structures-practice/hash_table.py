@@ -1,7 +1,6 @@
 import linked_list
 
 
-
 class hash_table:
     def __init__(self):
         self.dictionary = {}

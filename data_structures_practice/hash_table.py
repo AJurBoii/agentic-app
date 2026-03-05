@@ -1,4 +1,4 @@
-import LinkedList
+from DataStructuresPractice import linked_list
 
 
 class HashTable:
@@ -14,7 +14,7 @@ class HashTable:
 
     def add_bucket(self, hash_value: int, value: any) -> None:
         if hash_value not in self.dictionary:
-            self.dictionary[hash_value] = LinkedList()
+            self.dictionary[hash_value] = linked_list()
         self.dictionary[hash_value].append(value)
 
     def add(self, key: str) -> None:

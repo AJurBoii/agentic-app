@@ -24,6 +24,22 @@ class LinkedList:
             last_node = last_node.next
         last_node.set_next(new_node)
 
+    def pop(self) -> any:
+        if not self.head:
+            raise IndexError("Pop from empty linked list")
+        if not self.head.next:
+            value = self.head.value
+            self.head = None
+            return value
+        current = self.head
+        value = current.value
+        while current.next:
+            current.value = current.next.value
+            current = current.next
+            current.set_next(None)
+
+        return value
+
     def __repr__(self) -> str:
         nodes = []
         current = self.head

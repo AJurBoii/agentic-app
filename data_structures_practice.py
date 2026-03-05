@@ -47,6 +47,19 @@ class hash_object:
             self.dictionary[hash_value] = linked_list()
         self.dictionary[hash_value].append(value)
 
+    def add(self, key: str):
+        hash_value = self.encode(key)
+        self.add_bucket(hash_value, key)
+
+    def search(self, key: str) -> bool:
+        hash_value = self.encode(key)
+        if hash_value in self.dictionary:
+            current = self.dictionary[hash_value].head
+            while current:
+                if current.value == key:
+                    return True
+                current = current.next
+        return False
 
 if __name__ == "__main__":
     hash_obj = hash_object()

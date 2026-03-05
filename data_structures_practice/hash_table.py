@@ -1,4 +1,4 @@
-from DataStructuresPractice import linked_list
+from data_structures_practice import linked_list
 
 
 class HashTable:

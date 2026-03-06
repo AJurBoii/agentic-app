@@ -19,7 +19,8 @@ class TestMain(unittest.TestCase):
         assert ll.pop() == 1
         assert ll.pop() == 2
         assert ll.pop() == 3
-        assert isinstance(ll.pop(), IndexError)
+        with self.assertRaises(IndexError):
+            ll.pop()
 
 
 if __name__ == "__main__":

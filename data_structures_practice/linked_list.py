@@ -27,17 +27,8 @@ class LinkedList:
     def pop(self) -> any:
         if not self.head:
             raise IndexError("Pop from empty linked list")
-        if not self.head.next:
-            value = self.head.value
-            self.head = None
-            return value
-        current = self.head
-        value = current.value
-        while current.next:
-            current.value = current.next.value
-            current = current.next
-            current.set_next(None)
-
+        value = self.head.value
+        self.head = self.head.next
         return value
 
     def __repr__(self) -> str:

@@ -1,8 +1,13 @@
-from pydantic import validate_call
+from pydantic import BaseModel, validate_call
 
 
-def main() -> None:
-    print("Hello from agentic-app!")
+class User(BaseModel):
+    username: str
+    email: str
+    age: int
+
+    bio: str = ""
+    full_name: str | None = None
 
 
 def greet(name: str) -> str:
@@ -30,10 +35,10 @@ def calculate_average(numbers: list[int | float]) -> float:
 
 
 if __name__ == "__main__":
-    main()
-
     print(calculate_average([33, 33.4, 49, 2, 3, 75]))
 
     print(greet("AJ"))
 
     print(bubble_sort([5, 2, 8, 1, 9]))
+
+    user = User(username="ajlesure", email="amariusj.lesure@gmail.com", age=24)

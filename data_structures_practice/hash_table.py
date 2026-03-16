@@ -12,16 +12,16 @@ class HashTable:
             hash_value += ord(char) * (i + 1)
         return hash_value % (2**32)  # prevents absurdly large hash values
 
-    def add_bucket(self, hash_value: int, value: any) -> None:
+    def add_bucket(self, hash_value: int, value: str | int) -> None:
         if hash_value not in self.dictionary:
-            self.dictionary[hash_value] = linked_list()
+            self.dictionary[hash_value] = linked_list.LinkedList()
         self.dictionary[hash_value].append(value)
 
-    def add(self, key: str) -> None:
+    def add(self, key: str | int) -> None:
         hash_value = self.encode(key)
         self.add_bucket(hash_value, key)
 
-    def search(self, key: str) -> bool:
+    def search(self, key: str | int) -> bool:
         hash_value = self.encode(key)
         if hash_value in self.dictionary:
             current = self.dictionary[hash_value].head
@@ -31,7 +31,7 @@ class HashTable:
                 current = current.next
         return False
 
-    def remove(self, key: str) -> bool:
+    def remove(self, key: str | int) -> bool:
         hash_value = self.encode(key)
         if self.search(key):
             current = self.dictionary[hash_value].head
@@ -46,6 +46,9 @@ class HashTable:
                 prev = current
                 current = current.next
         return False
+
+    def __repr__(self) -> str:
+        return f"HashTable({self.dictionary})"
 
 
 if __name__ == "__main__":

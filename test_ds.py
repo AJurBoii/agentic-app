@@ -22,6 +22,14 @@ class TestMain(unittest.TestCase):
         with self.assertRaises(IndexError):
             ll.pop()
 
+    def test_hash_table(self):
+        ht = hash_table.HashTable()
+        ht.add("Hello")
+        ht.add("hello")  # should be a unique key, no collision
+        ht.add("hello")  # should be added to bucket, no collision
+        ht.add(123)
+        print(ht)
+
 
 if __name__ == "__main__":
     unittest.main()

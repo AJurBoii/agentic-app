@@ -5,11 +5,14 @@ class HashTable:
     def __init__(self) -> None:
         self.dictionary = {}
 
-    def encode(self, key: str) -> int:
+    def encode(self, key: str | int) -> int:
         # custom hash function because using built-in hash() is boring and can also lead to collisions
         hash_value = 0
-        for i, char in enumerate(key):
-            hash_value += ord(char) * (i + 1)
+        if isinstance(key, str):
+            for i, char in enumerate(key):
+                hash_value += ord(char) * (i + 1)
+        else:
+            hash_value = key
         return hash_value % (2**32)  # prevents absurdly large hash values
 
     def add_bucket(self, hash_value: int, value: str | int) -> None:

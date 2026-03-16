@@ -1,4 +1,4 @@
-from pydantic import BaseModel, validate_call
+from pydantic import BaseModel, ValidationError, validate_call
 
 
 class User(BaseModel):
@@ -42,3 +42,15 @@ if __name__ == "__main__":
     print(bubble_sort([5, 2, 8, 1, 9]))
 
     user = User(username="ajlesure", email="amariusj.lesure@gmail.com", age=24)
+
+    try:
+        user = User(username="connorscott", email="connor.j.scott@gmail.com", age="24")
+    except ValidationError as e:
+        print(e)
+
+    try:
+        user = User(username=1000, email=None, age=False)
+    except ValidationError as e:
+        print(e)
+
+    print(user.model_dump_json(indent=2))

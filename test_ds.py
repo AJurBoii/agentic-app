@@ -19,7 +19,7 @@ class TestMain(unittest.TestCase):
         assert ll.pop() == 1
         assert ll.pop() == 2
         assert ll.pop() == 3
-        with self.assertRaises(IndexError):
+        with self.assertRaises(IndexError):  # noqa: PT027
             ll.pop()
 
     def test_hash_table(self):
